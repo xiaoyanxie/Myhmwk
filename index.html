@@ -1,41 +1,125 @@
-<html>
+<html lang="en">
 <head>
-<title>Xiaoyan Xie</title> </head>
+    <title>Xiaoyan Xie</title>
+    <script src="https://kit.fontawesome.com/8d28b7b8a3.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+        body {
+            font-size: 20px;
+            font-family: "sans-serif"
+        }
+
+        .fav-books tr:nth-child(even) {
+            background-color: #D5D1C9FF;
+        }
+
+        h1, p {
+            color: #3C4994FF;
+            margin-bottom: 30px
+        }
+        h2, p {
+            color: #737cb8;
+            margin-bottom: 30px
+        }
+
+        .top-foods {
+            border: 2px solid rgb(179, 225, 232);
+            width: 50%;
+            margin: auto;
+        }
+
+        .fav-food {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 30px;
+        }
+        .food-image {
+            width: 300px;
+            height: 200px;
+            background-image: url("image/watermelon.jpeg");
+            background-size: cover;
+            margin-right: 30px;
+        }
+
+        .brand {
+            position: fixed;
+            right: 35px;
+            top: 100px;
+        }
+        .facebook {
+            margin-right: 40px;
+        }
+
+        .form-container {
+            display: flex;
+            margin-top: 30px;
+        }
+        .form-container label {
+            text-align: right;
+            margin-right: 20px;
+        }
+        .form-container table {
+            border-collapse: collapse;
+        }
+        .form-container td {
+            padding: 5px;
+        }
+        .form-container input[type="text"], select {
+            width: 100%;
+            height: 25px;
+        }
+    </style>
+</head>
 <body>
-<h1>Xiaoyan Xie</h1>
-<br/>
+
+<h1>
+    Xiaoyan Xie
+</h1>
+<i class="fa-brands fa-square-x-twitter fa-xl brand twitter"></i>
+<i class="fa-brands fa-square-facebook fa-xl brand facebook"></i>
 <h2>Why Learn Web Programming</h2>
 <div>I find web programming fascinating because I can create something of my own
-    through my design, which gives me a great sense of accomplishment.</div>
+    through my design, which gives me a great sense of accomplishment.
+</div>
 <div>Additionally, I want to use my web programming skills to design
-    my own personal website.</div>
+    my own personal website.
+</div>
+
 <h2>My Top 3 Favourite Foods</h2>
+<ul class="top-foods">
     <li>Watermelon</li>
     <li>Cherry</li>
     <li>BBQ</li>
+</ul>
 
-
-<br /><img src='image/watermelon.jpg' height="300" align='left' width='200'>
-<div>Watermelon juice is the best way to enjoy the fruit.
-<div>It's refreshing and revitalizing, especially during
-<div>hot summer days or when feeling down.
-<div>Sip on a glass of chilled watermelon juice and let its
-<div>natural sweetness lift your spirits.</div>
-<br clear="all" />
-<br>
+<br/>
+<div class="fav-food">
+    <div class="food-image"></div>
+    <div class="food-text">
+        <div>Watermelon juice is the best way to enjoy the fruit.</div>
+        <div>It's refreshing and revitalizing, especially during</div>
+        <div>hot summer days or when feeling down.</div>
+        <div>Sip on a glass of chilled watermelon juice and let its</div>
+        <div>natural sweetness lift your spirits.</div>
+    </div>
+</div>
 
 <h2>My Favourite Restaurant: THE Q</h2>
 <div>This restaurant offers a diverse menu with a wide range of options to choose from.</div>
-<div>Whether you're in the mood for traditional local dishes or international cuisine, they have something to satisfy every palate. </div>
+<div>Whether you're in the mood for traditional local dishes or international cuisine, they have
+    something to satisfy every palate.
+</div>
 <div>The flavors you'll experience at this restaurant are incredibly authentic.</div>
-<div>The chefs have mastered the art of creating dishes that stay true to their cultural roots, resulting in a truly immersive dining experience. </div>
-<br/>
+<div>The chefs have mastered the art of creating dishes that stay true to their cultural roots,
+    resulting in a truly immersive dining experience.
+</div>
+
+
 <a href="https://thequsa.com/" target="_blanke">Click to see my favourite restaurant!</a>
 <br/>
 <h2>My Favourite Books</h2>
-<table border="1" cellpadding="4" cellspacing="5">
+<table border="1" cellpadding="4" cellspacing="5" class="fav-books">
     <tr>
-        <th>Cover</th>
+        <th></th>
         <th>Name</th>
         <th>Author</th>
         <th>About the Book</th>
@@ -44,26 +128,75 @@
         <td><img src='image/harrypotter.jpg' height="150" align='left' width='100'></td>
         <td>Harry Potter</td>
         <td>J.K. Rowling</td>
-        <td>The series tells the magical adventures of a young wizard named Harry Potter. </td>
+        <td>The series tells the magical adventures of a young wizard named Harry Potter.</td>
     </tr>
     <tr>
         <td><img src='image/thelordofthering.jpg' height="150" align='left' width='100'></td>
         <td>The Lord of the Rings</td>
         <td>J.R.R. Tolkien</td>
-        <td>This epic fantasy trilogy takes readers on an adventure through Middle-earth todestroy a powerful ring and defeat the dark lord Sauron.</td>
+        <td>This epic fantasy trilogy takes readers on an adventure through Middle-earth to destroy
+            a powerful ring and defeat the dark lord Sauron.
+        </td>
     </tr>
     <tr>
         <td><img src='image/thekitrunner.jpg' height="150" align='left' width='100'></td>
         <td>The Kit Runner</td>
-        <td>Khaled Hosseini </td>
-        <td>His powerful novel tells the story of Amir, a young boy from Afghanistan, and his journey of redemption and self-discovery.</td>
+        <td>Khaled Hosseini</td>
+        <td>His powerful novel tells the story of Amir, a young boy from Afghanistan, and his
+            journey of redemption and self-discovery.
+        </td>
     </tr>
     <tr>
         <td><img src='image/tokillamockingbird.jpg' height="150" align='left' width='100'></td>
         <td>To Kill A Mockingbird</td>
         <td>Harper Lee</td>
-        <td>This classic novel explores themes of racial injustice, morality, and the loss of innocence through the eyes of a young girl in the 1930s American South.</td>
+        <td>This classic novel explores themes of racial injustice, morality, and the loss of
+            innocence through the eyes of a young girl in the 1930s American South.
+        </td>
     </tr>
 </table>
+
+<form class="form-container">
+    <table>
+        <tr>
+            <td><label for="fname">First Name:</label></td>
+            <td><input type="text" id="fname" name="fname"></td>
+        </tr>
+        <tr>
+            <td><label for="lname">Last Name:</label></td>
+            <td><input type="text" id="lname" name="lname"></td>
+        </tr>
+        <tr>
+            <td><label for="city">City:</label></td>
+            <td><input type="text" id="city" name="city"></td>
+        </tr>
+        <tr>
+            <td><label for="state">State:</label></td>
+            <td><select id="state" name="state">
+                    <option value="">Select...</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Washington">Washington</option>
+                    <option value="California">California</option>
+                    <option value="New York">New York</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="Arizona">Arizona</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Go!"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
