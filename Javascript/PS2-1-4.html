@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PS2-1-4</title>
+</head>
+<body>
+<script>
+
+let num1= parseInt(prompt(`Give me the first number of the range:`));
+let num2= parseInt(prompt(`Give me the last number of the range:`));
+let sum = 0;
+
+for( i = num1; i < num2 + 1; i++)
+{
+    sum += i
+    if (i % 2 == 1)
+    {
+        document.write(i + '<br>')
+    }
+}
+document.write(`Sum: ${sum}`);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PS2-1-6</title>
+</head>
+<body>
+<script>
+
+
+function compare(array, value)
+{
+    let count = 0;
+    for (i = 0; i < array.length; i++)
+    {
+        if (array[i] < value)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+var array =[3,55,30,28,9,12];
+var value = 10;
+document.write(compare(array, value));
+
+</script>
+
+</body>
+</html>
