@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PS2-2-2</title>
+</head>
+<body>
+<script>
+
+let string = "Pat, Chris, Marlon, Ferncroft, Assunta";
+let stringArray = string.split(", ");
+let NumList = stringArray.map((string, index) => `<li>${index + 1}. ${string}</li>`).join(" ");
+let list = `<ul>${NumList}</ul>`;
+document.write(list);
+
+</script>
+
+
+
+</body>
+</html>
