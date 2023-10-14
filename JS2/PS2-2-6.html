@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PS2-2-6</title>
+</head>
+<body>
+<label>Pick a state:</label>
+
+<select id="state" name="state" size = 12></select>
+<button onclick = "AddStates()">Add State</button>
+<br><br><br>
+<div id="SelectState" style="border:1px solid black; padding:10px; min-height: 50px; min-width: auto">
+</div>
+<br>
+<button onclick="ClearSelectedStates()">Clear States</button>
+<div id="ClearStates" style="width: auto; height: auto">
+</div>
+
+<script>
+    var StatesArray = ["Massachusetts", "Ohio", "Washington", "California", "Texas", "Florida", "Illinois",
+        "Pennsylvania", "Georgia", "Michigan", "Virginia", "New York"];
+    var Select = document.getElementById("state");
+
+    for(var i = 0; i < StatesArray.length; i++) {
+        var opt = StatesArray[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        Select.appendChild(el);
+    }
+
+    Select.selectedIndex = 0;
+
+    function AddStates() {
+        var Select = document.getElementById("state");
+        var SelectedState = Select.options[Select.selectedIndex].value;
+        var div = document.getElementById("SelectState");
+        div.innerHTML += SelectedState + "<br>";
+
+        Select.remove(Select.selectedIndex); //In the states list, clear the selected state
+    }
+
+    function ClearSelectedStates() {
+        var div = document.getElementById("SelectState");
+
+        var RestoreStates = div.innerHTML.split("<br>");
+
+        RestoreStates.pop();
+
+        for (var i = 0; i < RestoreStates.length; i++) {
+        StatesArray.push(RestoreStates[i]);
+            var el = document.createElement("option");
+            el.textContent = RestoreStates[i];
+            Select.appendChild(el);
+
+    }
+
+    div.innerHTML = "";
+    }
+
+</script>
+
+</body>
+</html>

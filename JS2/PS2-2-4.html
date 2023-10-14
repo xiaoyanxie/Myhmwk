@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PS2-2-4</title>
+</head>
+<body>
+
+<form id = "form" >
+    <br><br>
+    Name: <input type = "text" id = "name">
+    <br><br>
+    <button type = "button" name = "hello" id = "HelloButton" > Hello</button>
+    <br><br>
+    <button type = "button" name = "goodbye" id = "GoodbyeButton" > Good Bye</button>
+    <br><br>
+    <button type = "button" name = "greetings" id = "GreetingsButton" > Greetings</button>
+    <br><br>
+
+    <script>
+        window.onload = function() {
+            document.getElementById("HelloButton").addEventListener("click", speak);
+            document.getElementById("GoodbyeButton").addEventListener("click", speak);
+            document.getElementById("GreetingsButton").addEventListener("click", speak);
+        }
+
+        function speak(event)
+        {
+            let prefix = event.target.innerHTML;
+            let name = document.getElementById("name").value;
+            alert(`${prefix} ${name}`);
+        }
+
+    </script>
+
+</body>
+</html>
