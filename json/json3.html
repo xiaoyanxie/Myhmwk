@@ -11,33 +11,49 @@
             <td><label for="genre">Genre:</label></td>
             <td><select id="genre" name="genre">
                 <option value="">Select...</option>
-                <option value="pop">pop</option>
-                <option value="rock">rock</option>
-                <option value="rap">rap</option>
-                <option value="disco">disco</option>
-                <option value="electropop">electropop</option>
+
             </select></td>
         </tr>
 
         <tr>
-            <td><input type="submit" value="filter"></td>
+            <td><input type="submit" value="Filter"></td>
         </tr>
 
     </table>
 </form>
 
-<p id = "SelectedSong"></p>
+<div id = "SelectedSong"></div>
 
 <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
     let MySong;
+    let genres = [];
 
     $.get("songs.json", function(data) {
         MySong = data;
+
+
+    $.each(MySong.list, function(i, song){
+        $.each(song.Genre, function(j, genre){
+            if ($.inArray(genre, genres) === -1){
+                genres.push(genre);
+            }
+        });
+    });
+
+        
+    $.each(genres, function(i, genre){
+        $('#genre').append($('<option>', {
+            value: genre,
+            text : genre
+        }));
+    });
+
     }, "json");
 
+    
     $('#form').on('submit', function(event) {
         event.preventDefault();
 
