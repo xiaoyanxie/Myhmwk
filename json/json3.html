@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json3</title>
+</head>
+<body>
+<form id ="form">
+    <table>
+        <tr>
+            <td><label for="genre">Genre:</label></td>
+            <td><select id="genre" name="genre">
+                <option value="">Select...</option>
+                <option value="pop">pop</option>
+                <option value="rock">rock</option>
+                <option value="rap">rap</option>
+                <option value="disco">disco</option>
+                <option value="electropop">electropop</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="filter"></td>
+        </tr>
+
+    </table>
+</form>
+
+<p id = "SelectedSong"></p>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    let MySong;
+
+    $.get("songs.json", function(data) {
+        MySong = data;
+    }, "json");
+
+    $('#form').on('submit', function(event) {
+        event.preventDefault();
+
+        let selectedGenre = $('#genre').val();
+        $("#SelectedSong").empty();
+
+        $.each(MySong.list, function(i, song){
+            if ($.inArray(selectedGenre, song.Genre) !== -1){
+                $("#SelectedSong").append(song.title + '<br>');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
