@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jason2</title>
+</head>
+<body>
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script>
+    $.get("songs.json", function(data) {
+        let MySong = data;
+        let SongListDiv = document.getElementById('SongList');
+
+        for (let i = 0; i < MySong.list.length; i++) {
+            let song = MySong.list[i];
+            SongListDiv.innerHTML += '<p><b style="font-size: larger;">' + song.title + '</b><br>' +
+                'Artist: ' + song.artist + '<br>' +
+                'Genre: ' + song.genre.join(', ') + '<br>' +
+                'Released ' + song.year + '</p>';
+        }
+    }, "json");
+</script>
+
+</body>
+</html>

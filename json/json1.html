@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Song List</title>
+</head>
+
+<body>
+<pre id = "SongList"></pre>
+
+<script>
+    let SongList = {
+        "list": [
+            {
+                "title": "Dance The Night",
+                "artist": "Dua Lipa",
+                "Genre": ["pop, disco"],
+                "Released": 2023,
+            },
+            {
+                "title": "As It Was",
+                "Artist": "Harry Styles",
+                "Genre": ["pop"],
+                "Released": 2022,
+            },
+            {
+                "title": "Life Is Good",
+                "Artist": "Future",
+                "Genre": ["rap"],
+                "Released": 2020,
+            },
+            {
+                "title": "Love Me Like You Do",
+                "Artist": "Ellie Goulding",
+                "Genre": ["electropop"],
+                "Released": 2015,
+            },
+            {
+                "title": "All Too Well",
+                "Artist": "Taylor Swift",
+                "Genre": ["rock"],
+                "Released": 2012,
+            },
+            {
+                "title": "Love The Way You Lie",
+                "Artist": "Eminem",
+                "Genre": ["pop"],
+                "Released": 2010,
+            },
+            {
+                "title": "Fifteen",
+                "Artist": "Taylor Swift",
+                "Genre": ["pop"],
+                "Released": 2008,
+            },
+            {
+                "title": "Something Just Like This",
+                "Artist": "Coldplay",
+                "Genre": ["rock"],
+                "Released": 2017,
+            },
+            {
+                "title": "Sugar",
+                "Artist": "Maroon 5",
+                "Genre": ["pop"],
+                "Released": 2014,
+            },
+            {
+                "title": "Sorry",
+                "Artist": "Justin Bieber",
+                "Genre": ["pop"],
+                "Released": 2015,
+            }]
+
+    }
+
+    let SongListString = JSON.stringify(SongList, null, 2);
+
+    document.getElementById(`SongList`).textContent = SongListString;
+
+</script>
+</body>
+</html>
