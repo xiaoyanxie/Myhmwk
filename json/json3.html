@@ -57,11 +57,11 @@
     $('#form').on('submit', function(event) {
         event.preventDefault();
 
-        let selectedGenre = $('#genre').val();
+        let SelectedGenre = $('#genre').val();
         $("#SelectedSong").empty();
 
         $.each(MySong.list, function(i, song){
-            if ($.inArray(selectedGenre, song.Genre) !== -1){
+            if ($.inArray(SelectedGenre, song.Genre) !== -1){
                 $("#SelectedSong").append(song.title + '<br>');
             }
         });
