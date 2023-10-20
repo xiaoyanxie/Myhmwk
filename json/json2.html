@@ -18,9 +18,9 @@
         for (let i = 0; i < MySong.list.length; i++) {
             let song = MySong.list[i];
             SongListDiv.innerHTML += '<p><b style="font-size: larger;">' + song.title + '</b><br>' +
-                'Artist: ' + song.artist + '<br>' +
-                'Genre: ' + song.genre.join(', ') + '<br>' +
-                'Released ' + song.year + '</p>';
+                'Artist: ' + song.Artist + '<br>' +
+                'Genre: ' + song.Genre.join(', ') + '<br>' +
+                'Released ' + song.Released + '</p>';
         }
     }, "json");
 </script>
