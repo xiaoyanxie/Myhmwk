@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PS2-4</title>
+</head>
+<body>
+
+<h1>DATA</h1>
+<div id="data"></div>
+
+<script>
+    function GetData() {
+        fetch('https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01')
+            .then(res => {
+                document.getElementById('data').innerHTML = res.status + '<br>';
+                return res.json();
+            })
+            .then(data => {
+                let output = '<ul>';
+                data.forEach(item => {
+                    output += '<li>' + item.category + ' ' + item.location.street.name + '</li>';
+                });
+                output += '</ul>';
+                document.getElementById('data').innerHTML += 'Data: ' + output;
+            })
+            .catch(error => console.log(error));
+    }
+    GetData();
+</script>
+
+<h2>The API I choose and what it does</h2>
+<div>I chose the API called Data.Police.UK.. This API aims to provide data about
+    neighbourhood team members, upcoming events, street-level crime and nearest
+    police stations. </div>
+<br>
+<h2>Where I found it</h2>
+<div>https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/</div>
+<br>
+<h2>My options used for the API request</h2>
+On-street, all-crime, date are used to request the data. As a result, the data
+requested will list all the on-street crimes on Jan 2023 with the crime categories
+and the street names.
+<br>
+<h2>Two applications of API</h2>
+<div>This API can be used by a real estate leasing website, which can help the
+    customers to check if the city and area they will live is safe or not. </div>
+<div>Furthermore, it can be used by insurance companies' products purchase website
+    for product price premium design. The premium can be set relatively higher
+    when the user chooses an area with higher crime rate.</div>
+
+</body>
+</html>
