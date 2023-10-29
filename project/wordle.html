@@ -40,12 +40,7 @@
 
     }
 
-    .newtColor {
-      background-color: white;
-    }
-
-    .usedLetterBoard,
-    .averageGuesses {
+    .usedLetterBoard {
       display: flex;
       flex-wrap: wrap;
       justify-content: left;
@@ -58,6 +53,7 @@
 
 <body>
   <script>
+    // answers= [world, funny, cloud, movie, false, smart, guess];
     const gameState = {
       usedLetters: [],
       rowNumber: 0,
@@ -68,6 +64,7 @@
       reset: function () {
         this.usedLetters = [];
         this.rowNumber = 0;
+        //this.answer = this.answers[Math.floor(Math.random() * this.answers.length)];
         this.answer = this.words[Math.floor(Math.random() * this.words.length)];
         this.gameOver = false;
         console.log(`Answer: ${this.answer}`);
@@ -87,7 +84,7 @@
       answerFrequency: function () {
         let frequency = {};
         this.answer.split("").forEach(letter => {
-          if (frequency[letter] != undefined) {
+          if (frequency[letter] !== undefined) {
             frequency[letter]++;
           } else {
             frequency[letter] = 1;
@@ -206,7 +203,7 @@
       }
     }
 
-    function addEventListenerToBottons() {
+    function addEventListenerToButtons() {
       document.getElementById("CheckButton").addEventListener("click", (event) => {
         checkWord();
       })
@@ -216,7 +213,7 @@
 
         gameState.reset();
         showUsedLetters([]);
-        clearCellStates(gameState.rowNumber);
+        clearCellStates();
         clearGuessWord();
 
         let table = document.getElementById('table');
@@ -231,11 +228,11 @@
       if (clickButton == null) {
         document.addEventListener("DOMContentLoaded", (event) => {
           console.log("Add listener to CheckButton");
-          addEventListenerToBottons();
+          addEventListenerToButtons();
         })
       }
       else {
-        addEventListenerToBottons();
+        addEventListenerToButtons();
       }
     }
 
