@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <style>
+        .product {
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .product img {
+            width: 200px;
+            height: 200px;
+        }
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="orders.html">Orders</a>
+    <br>
+</div>
+
+<div id="products"></div>
+
+<script>
+    fetch('https://shoebox-v3ry.onrender.com/getProductList')
+        .then(res => res.json())
+        .then(data => {
+            const productsDiv = document.getElementById('products')
+
+            // Create a div element for each product
+            data.forEach(product => {
+                const productDiv = document.createElement('div')
+                productDiv.className = 'product'
+
+                let img = document.createElement('img')
+                img.src = product.image
+                productDiv.appendChild(img)
+
+                const productInfoDiv = document.createElement('div')
+                productInfoDiv.className = 'product-info';
+
+                let nameAndPrice = document.createElement('p')
+                nameAndPrice.textContent = `${product.name} $${product.price}`
+                productInfoDiv.appendChild(nameAndPrice)
+
+                let quantitySelect = document.createElement('select')
+                for(let i = 1; i <= 10; i++) {
+                    let option = document.createElement('option')
+                    option.value = i;
+                    option.text = i;
+                    quantitySelect.appendChild(option)
+                }
+                productInfoDiv.appendChild(quantitySelect)
+
+                productDiv.appendChild(productInfoDiv)
+
+                // Add the addToCart button and remove button
+                let addToCartButton = document.createElement('button')
+                addToCartButton.textContent = 'Add to Cart';
+                addToCartButton.addEventListener('click', function() {
+                    // Get the current cart from session storage
+                    let cart = JSON.parse(sessionStorage.getItem('cart')) || {}
+                    if (Object.keys(cart).length >= 5) {
+                        alert('You can only order up to 5 items at a time.');
+                        return;
+                    }
+                    // Get the selected quantity
+                    let quantity = quantitySelect.value
+
+                    // If the product is already in the cart, increase the quantity
+                    if (cart[product._id]) {
+                        cart[product._id].quantity += Number(quantity)
+                    } else {
+                        // Otherwise, add the product to the cart
+                        cart[product._id] = {
+                            name: product.name,
+                            price: product.price,
+                            quantity: Number(quantity)
+                        }
+                    }
+                    window.location.href = "cart.html"
+
+                    // Save the updated cart back to session storage
+                    sessionStorage.setItem('cart', JSON.stringify(cart))
+                })
+                productDiv.appendChild(addToCartButton)
+
+                let moreButton = document.createElement('button')
+                moreButton.textContent = 'More'
+                productDiv.appendChild(moreButton)
+
+                let descriptionDiv = document.createElement('div')
+                descriptionDiv.className = 'description'
+                descriptionDiv.style.display = 'none'
+                descriptionDiv.textContent = `Description: ${product.description}`
+                productDiv.appendChild(descriptionDiv)
+
+                moreButton.addEventListener('click', function() {
+                    descriptionDiv.style.display = descriptionDiv.style.display === 'none' ? 'block' : 'none'
+                })
+
+                productsDiv.appendChild(productDiv)
+            })
+        })
+        .catch(error => console.log(error))
+
+</script>
+
+</body>
+</html>

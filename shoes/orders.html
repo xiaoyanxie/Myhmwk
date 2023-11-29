@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+    <a href="orders.html">Orders</a>
+    <br><br><br>
+</div>
+<div id="orders"></div>
+<script>
+
+    function GetData() {
+        fetch('https://shoebox-v3ry.onrender.com/getOrderList')
+            .then(res => res.json())
+            .then(data => {
+                const ordersDiv = document.getElementById('orders')
+
+                // Sort the orders by time in descending order
+                data.sort((a, b) => new Date(b.time) - new Date(a.time))
+
+                data.forEach(order => {
+                    const orderDiv = document.createElement('div')
+                    orderDiv.className = 'order'
+                    orderDiv.style.marginBottom = '20px'; // Add space between orders
+
+                    orderDiv.textContent = `Order ID: ${order._id}`
+
+                    // Time div
+                    const timeDiv = document.createElement('div')
+                    timeDiv.textContent = `Time: ${order.time}`
+                    orderDiv.appendChild(timeDiv)
+
+                    // Order items
+                    order.items.forEach(item => {
+                        const itemDiv = document.createElement('div')
+                        itemDiv.className = 'item'
+                        itemDiv.innerHTML = `Name: ${item.name} <br> Quantity: ${item.quantity} <br> Cost: ${item.price * item.quantity}` // Use <br> for line break
+                        orderDiv.appendChild(itemDiv)
+                    })
+
+                    ordersDiv.appendChild(orderDiv)
+                })
+            })
+            .catch(error => console.log(error))
+    }
+
+    GetData()
+</script>
+
+</body>
+</html>
