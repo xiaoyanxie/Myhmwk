@@ -80,7 +80,8 @@
             alert("Your cart is empty. Please add some items before checking out.")
             return;
         }
-        document.cookie = `cart=${JSON.stringify(cart)}; domain=shoebox-v3ry.onrender.com; path=/`;
+        let sameSiteSetting = location.hostname === "localhost" ? "Lax" : "None";
+        document.cookie = `cart=${JSON.stringify(cart)}; domain=shoebox-v3ry.onrender.com; path=/; SameSite=${sameSiteSetting}; Secure`;
         // Make the server request
         fetch('https://shoebox-v3ry.onrender.com/checkoutCart', {
             method: 'PUT',
