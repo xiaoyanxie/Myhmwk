@@ -81,7 +81,7 @@
             return;
         }
         let sameSiteSetting = location.hostname === "localhost" ? "Lax" : "None";
-        Cookies.set('cart', JSON.stringify(cart), {sameSite: sameSiteSetting, secure: true})
+        Cookies.set('cart', JSON.stringify(cart), {sameSite: sameSiteSetting, secure: true, domain: 'shoebox-v3ry.onrender.com'})
         console.log(`Cookies: ${Cookies.get('cart')}`)
         // Make the server request
         fetch('https://shoebox-v3ry.onrender.com/checkoutCart', {
